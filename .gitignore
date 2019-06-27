@@ -1,0 +1,7 @@
+.*
+!.gitignore
+venv/
+env/
+.venv/
+.env/
+**/*.py[cod]
