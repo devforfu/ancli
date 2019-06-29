@@ -1,4 +1,7 @@
-# ancli
+<p align="center">
+<img src="./assets/cli.png"/>
+</p>
+
 Building argument parser from a function annotation. A simple utility inspired by 
 `Fire` and `docopt`. Ad-hoc solution for someone who often writes scripts with a 
 single entry point.
