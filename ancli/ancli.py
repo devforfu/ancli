@@ -7,8 +7,7 @@ __all__ = ['Parser', 'add', 'run', 'make_cli']
 
 
 Parser = argparse.ArgumentParser
-
-
+empty = inspect._empty
 _argv = None
 
 
@@ -36,17 +35,21 @@ def make_cli(func: callable, parser_config: dict = None, spec_only: bool = False
     for param in sig.parameters.values():
         annot = param.annotation
         options = {}
-        if isinstance(annot, tuple):
+        if annot is empty:
+            ptype = str
+        elif isinstance(annot, tuple):
             ptype, help_msg = annot
-            if help_msg is not inspect._empty:
+            if help_msg is not empty:
                 options['help'] = help_msg
         else:
             ptype = annot
         options['type'] = ptype
-        if param.default is inspect._empty:
+        if param.default is empty:
             options['required'] = True
         else:
             options['default'] = param.default
+            if annot is empty:
+                options['type'] = type(options['default'])
         options['name'] = param.name
         add(parser, options)
         spec.append(options)

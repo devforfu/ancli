@@ -39,3 +39,14 @@ def test_function_signature_without_args():
     spec = make_cli(no_args, spec_only=True)
 
     assert not spec
+
+
+def test_function_signature_without_annotations():
+    def no_annot(a, b=2.0, c=3): pass
+
+    spec = make_cli(no_annot, spec_only=True)
+
+    assert len(spec) == 3
+    assert spec[0] == {'name': 'a', 'type': str, 'required': True}
+    assert spec[1] == {'name': 'b', 'type': float, 'default': 2.0}
+    assert spec[2] == {'name': 'c', 'type': int, 'default': 3}
