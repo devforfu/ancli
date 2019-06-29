@@ -8,6 +8,7 @@ dev_requirements = {'dev': [
 
 setup(
     name='ancli',
+    version=__version__,
     maintainer='devforfu',
     description='Small utility to convert functions into CLI',
     install_requires=[],
