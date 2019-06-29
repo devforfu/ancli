@@ -1,11 +1,15 @@
 import argparse
 import inspect
+import sys
 
 
 __all__ = ['Parser', 'add', 'run', 'make_cli']
 
 
 Parser = argparse.ArgumentParser
+
+
+_argv = None
 
 
 def add(parser: Parser, param: dict):
@@ -15,9 +19,14 @@ def add(parser: Parser, param: dict):
     parser.add_argument(f'--{name}', **param)
 
 
+def set_argv(argv):
+    global _argv
+    _argv = argv
+
+
 def run(parser: Parser):
     """Parses the arguments."""
-    return vars(parser.parse_args())
+    return vars(parser.parse_args(_argv or sys.argv[1:]))
 
 
 def make_cli(func: callable, parser_config: dict = None, spec_only: bool = False):

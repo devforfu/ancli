@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-exec(open('loop/version.py').read())
+exec(open('ancli/version.py').read())
 
 dev_requirements = {'dev': [
     'pytest'
