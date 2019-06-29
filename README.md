@@ -55,3 +55,13 @@ $ python script.py --a 1 --b 2 --c 3.0
 <type 'int'>
 <type 'float'>
 ```
+
+### 3. Running `ancli` as a module
+
+Running package as a module allows to dynamically build a CLI from some function. 
+You just need to specify a path to the module, and function which should be 
+treated as an entry point.
+```bash
+$ python -m ancli examples.functions:compute --a 2 --b 6
+42
+```
