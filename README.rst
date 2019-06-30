@@ -2,8 +2,7 @@ ancli
 =====
 
 .. image:: https://i.imgur.com/5hCKc9u.png
-    :target: https://i.imgur.com/
-    :align: middle
+    :target: https://i.imgur.com/5hCKc9u.png
 
 Building argument parser from a function annotation. A simple utility inspired by 
 ``Fire`` and ``docopt``. Ad-hoc solution for someone who often writes scripts with a
