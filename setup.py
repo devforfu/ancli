@@ -11,6 +11,8 @@ setup(
     version=__version__,
     maintainer='devforfu',
     description='Small utility to convert functions into CLI',
+    url='https://github.com/devforfu/ancli',
+    download_url='https://github.com/devforfu/ancli/archive/v0.1.0-alpha.tar.gz',
     install_requires=[],
     packages=find_packages(),
     extra_require=dev_requirements,
