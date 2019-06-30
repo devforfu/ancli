@@ -7,3 +7,4 @@ env/
 **/*.py[cod]
 *~
 *.egg-info/
+dist/
