@@ -2,7 +2,7 @@ ancli
 =====
 
 .. image:: https://i.imgur.com/5hCKc9u.png
-    :target: https://i.imgur.com/
+    :target: https://i.imgur.com/5hCKc9u.png
     :align: middle
 
 Building argument parser from a function annotation. A simple utility inspired by 
