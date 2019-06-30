@@ -1,5 +1,5 @@
 <p align="center">
-![](https://imgur.com/5hCKc9u)
+    <img src="https://i.imgur.com/5hCKc9u.png">
 </p>
 
 Building argument parser from a function annotation. A simple utility inspired by 
