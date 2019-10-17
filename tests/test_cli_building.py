@@ -1,4 +1,7 @@
+import contextlib
+import io
 import sys
+import textwrap
 from ancli import make_cli
 
 
@@ -24,3 +27,30 @@ def test_building_cli_from_function(monkeypatch):
     assert params['command'] == 'run'
     assert params['path'] == 'file.txt'
     assert params['flag']
+
+
+def test_printing_parameters_passed_info_function(monkeypatch):
+    monkeypatch.setattr(sys, 'argv', [
+        'entry_point',
+        '--first', 'a',
+        '--second', 'b',
+        '--third', 'c'
+    ])
+
+    expected_output = textwrap.dedent('''
+    invoked with parameters
+    -----------------------
+    first=a
+    second=b
+    third=c
+    ''')
+
+    def run(first: str, second: str, third: str):
+        pass
+
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf):
+        make_cli(run, show_params=True)
+
+    captured = buf.getvalue()
+    assert captured == expected_output[1:]  # exclude first newline char

@@ -28,7 +28,22 @@ def run(parser: Parser):
     return vars(parser.parse_args(_argv or sys.argv[1:]))
 
 
-def make_cli(func: callable, parser_config: dict = None, spec_only: bool = False):
+def make_cli(func: callable,
+             parser_config: dict = None,
+             spec_only: bool = False,
+             show_params: bool = False):
+    """Wraps Python function with CLI.
+
+    Args:
+        func: Function to wrap.
+        parser_config: Parameters directly delegated to argparse.ArgumentParser.
+        spec_only: Don't create CLI and only print meta-information extracted
+            from function. Useful for debugging.
+        show_params: If True, then the parameters passed into function are
+            printed right before its call. Ignored if `spec_only` parameter is
+            provided.
+
+    """
     parser = Parser(**(parser_config or {}))
     sig = inspect.signature(func)
     spec = []
@@ -57,5 +72,10 @@ def make_cli(func: callable, parser_config: dict = None, spec_only: bool = False
         return spec
     else:
         args = run(parser)
+        print('invoked with parameters')
+        print('-----------------------')
+        if show_params:
+            for k, v in args.items():
+                print(f'{k}={v}')
         status = func(**args)
         return status
