@@ -14,7 +14,7 @@ setup(
     long_description=open('README.rst', 'r').read(),
     long_description_content_type='text/x-rst',
     url='https://github.com/devforfu/ancli',
-    download_url='https://github.com/devforfu/ancli/archive/v0.1.2.tar.gz',
+    download_url='https://github.com/devforfu/ancli/archive/v0.1.3.tar.gz',
     install_requires=[],
     packages=find_packages(),
     extra_require=dev_requirements,
